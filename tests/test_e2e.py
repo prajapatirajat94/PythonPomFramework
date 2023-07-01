@@ -64,8 +64,9 @@ class TestOne(BaseClass):
     # below method, you need to add in TestClass to for parametrize and pass it into test_e2e.py file method
     # (self,getData)
     # here params support tupples and dictionary data type
-    # below we have store data in HomePageData file from TestDta
-    @pytest.fixture(params=HomePageData.test_loginpage_data)
+    # below we have store data in HomePageData file from TestData
+    #pass this getData in method example:-> def test_e2e(self,getData):
+    @pytest.fixture(params=HomePageData.getTestData("TC1"))
     def getData(self, request):
         return request.param
 
