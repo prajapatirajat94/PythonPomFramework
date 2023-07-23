@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 import time
+from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.support.ui import Select
@@ -25,7 +26,9 @@ def setup(request):
     global driver
     browser_name = request.config.getoption("browser_name")
     if browser_name == "chrome":
-        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+        service_obj = Service("tests/chromedriver")
+        driver = webdriver.Chrome(service=service_obj)
+       # driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
         driver.maximize_window()
         driver.delete_all_cookies()
         driver.implicitly_wait(20)
@@ -68,5 +71,7 @@ def pytest_runtest_makereport(item):
         report.extra = extra
 
 
+
 def _capture_screenshot(name):
     driver.get_screenshot_as_file(name)
+

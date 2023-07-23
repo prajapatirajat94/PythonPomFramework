@@ -66,9 +66,9 @@ class TestOne(BaseClass):
     # here params support tupples and dictionary data type
     # below we have store data in HomePageData file from TestData
     #pass this getData in method example:-> def test_e2e(self,getData):
-    @pytest.fixture(params=HomePageData.getTestData("TC1"))
-    def getData(self, request):
-        return request.param
+    # @pytest.fixture(params=HomePageData.getTestData("TC1"))
+    # def getData(self, request):
+    #     return request.param
 
     # or you can use in params dictionary
     # @pytest.fixture(params=[{"firstname":"Rajat@gmail.com", "password":"Rsting123" },
