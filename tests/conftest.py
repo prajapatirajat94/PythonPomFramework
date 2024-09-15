@@ -26,7 +26,7 @@ def setup(request):
     global driver
     browser_name = request.config.getoption("browser_name")
     if browser_name == "chrome":
-        service_obj = Service("tests/chromedriver")
+        service_obj = Service("C:/Users/praja/PycharmProjects/PythonPOMFramework/tests/chromedriver.exe")
         driver = webdriver.Chrome(service=service_obj)
        # driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
         driver.maximize_window()
@@ -74,4 +74,3 @@ def pytest_runtest_makereport(item):
 
 def _capture_screenshot(name):
     driver.get_screenshot_as_file(name)
-
